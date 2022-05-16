@@ -1,3 +1,11 @@
+/**
+ * First TODO: Handle user input fields
+ * Second TODO: Handle Operations
+ * Third TODO: Handle a list of histories
+ * Fourth TODO: Render history list
+ * Fiveth TODO: Restore the history
+ */
+
 const App = () => {
   return (
     <div style={{ width: '50%', margin: '0 auto' }}>
