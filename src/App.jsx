@@ -1,6 +1,6 @@
 /**
  * DONE: Handle user input fields
- * Second TODO: Handle Operations
+ * DONE: Handle Operations
  * Third TODO: Handle a list of histories
  * Fourth TODO: Render history list
  * Fiveth TODO: Restore the history
@@ -25,6 +25,7 @@ const App = () => {
 
   const handleClearOps = () => {
     setInputeState({ ...InitialInputState });
+    setResult(0);
   };
 
   const handleArithmeticOps = (operation) => {
@@ -66,6 +67,7 @@ const App = () => {
         <button onClick={() => handleArithmeticOps('-')}>-</button>
         <button onClick={() => handleArithmeticOps('*')}>*</button>
         <button onClick={() => handleArithmeticOps('/')}>/</button>
+        <button onClick={() => handleArithmeticOps('%')}>%</button>
 
         <button onClick={handleClearOps}>Clear</button>
       </div>
