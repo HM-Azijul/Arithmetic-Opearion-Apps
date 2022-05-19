@@ -1,5 +1,5 @@
 /**
- * First TODO: Handle user input fields
+ * DONE: Handle user input fields
  * Second TODO: Handle Operations
  * Third TODO: Handle a list of histories
  * Fourth TODO: Render history list
@@ -16,13 +16,13 @@ const App = () => {
   const [inputState, setInputeState] = useState({ ...InitialInputState });
 
   // way-01
-  // const handleInputFields = (e) => {
-  //   // console.log(e.target.name);
-  //   setInputeState({
-  //     ...inputState,
-  //     [e.target.name]: parseInt(e.target.value),
-  //   });
-  // };
+  const handleInputFields = (e) => {
+    // console.log(e.target.name);
+    setInputeState({
+      ...inputState,
+      [e.target.name]: parseInt(e.target.value),
+    });
+  };
 
   //way-02
   // const handleFieldA = (e) => {
@@ -47,12 +47,12 @@ const App = () => {
   // };
 
   //way-04
-  const handleInputFields = (inp) => {
-    setInputeState({
-      ...inputState,
-      ...inp,
-    });
-  };
+  // const handleInputFields = (inp) => {
+  //   setInputeState({
+  //     ...inputState,
+  //     ...inp,
+  //   });
+  // };
 
   return (
     <div style={{ width: '50%', margin: '0 auto' }}>
@@ -64,13 +64,13 @@ const App = () => {
         <input
           type="number"
           value={inputState.a}
-          onChange={(e) => handleInputFields({ a: parseInt(e.target.value) })}
+          onChange={handleInputFields}
           name="a"
         />
         <input
           type="number"
           value={inputState.b}
-          onChange={(e) => handleInputFields({ b: parseInt(e.target.value) })}
+          onChange={handleInputFields}
           name="b"
         />
       </div>
