@@ -14,6 +14,7 @@ const InitialInputState = {
 
 const App = () => {
   const [inputState, setInputeState] = useState({ ...InitialInputState });
+  const [result, setResult] = useState(0);
 
   const handleInputFields = (e) => {
     setInputeState({
@@ -26,9 +27,20 @@ const App = () => {
     setInputeState({ ...InitialInputState });
   };
 
+  const handleArithmeticOps = (operation) => {
+    const f = new Function(
+      'operation',
+      `return ${inputState.a} ${operation} ${inputState.b};`
+    );
+    // console.log(f);
+    // console.log(f(operation));
+
+    setResult(f(operation));
+  };
+
   return (
     <div style={{ width: '50%', margin: '0 auto' }}>
-      <h1>Result: 0</h1>
+      <h1>Result: {result}</h1>
 
       <div>
         <p>Inputs</p>
@@ -49,10 +61,12 @@ const App = () => {
 
       <div>
         <p>Operations</p>
-        <button>+</button>
-        <button>-</button>
-        <button>*</button>
-        <button>/</button>
+
+        <button onClick={() => handleArithmeticOps('+')}>+</button>
+        <button onClick={() => handleArithmeticOps('-')}>-</button>
+        <button onClick={() => handleArithmeticOps('*')}>*</button>
+        <button onClick={() => handleArithmeticOps('/')}>/</button>
+
         <button onClick={handleClearOps}>Clear</button>
       </div>
 
