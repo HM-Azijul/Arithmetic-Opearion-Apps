@@ -21,8 +21,8 @@ const App = () => {
 
       <div>
         <p>Inputs</p>
-        <input type="number" />
-        <input type="number" />
+        <input type="number" value={inputState.a} />
+        <input type="number" value={inputState.b} />
       </div>
 
       <div>
