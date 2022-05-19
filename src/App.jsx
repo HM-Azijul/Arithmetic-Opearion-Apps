@@ -15,7 +15,6 @@ const InitialInputState = {
 const App = () => {
   const [inputState, setInputeState] = useState({ ...InitialInputState });
 
-  // way-01
   // const handleInputFields = (e) => {
   //   // console.log(e.target.name);
   //   setInputeState({
@@ -24,17 +23,23 @@ const App = () => {
   //   });
   // };
 
-  // way-02
-  const handleFieldA = (e) => {
+  // const handleFieldA = (e) => {
+  //   setInputeState({
+  //     ...inputState,
+  //     a: parseInt(e.target.value),
+  //   });
+  // };
+  // const handleFieldB = (e) => {
+  //   setInputeState({
+  //     ...inputState,
+  //     b: parseInt(e.target.value),
+  //   });
+  // };
+
+  const handleInputFields = (key, value) => {
     setInputeState({
       ...inputState,
-      a: parseInt(e.target.value),
-    });
-  };
-  const handleFieldB = (e) => {
-    setInputeState({
-      ...inputState,
-      b: parseInt(e.target.value),
+      [key]: value,
     });
   };
 
@@ -48,13 +53,13 @@ const App = () => {
         <input
           type="number"
           value={inputState.a}
-          onChange={handleFieldA}
+          onChange={(e) => handleInputFields('a', e.target.value)}
           name="a"
         />
         <input
           type="number"
           value={inputState.b}
-          onChange={handleFieldB}
+          onChange={(e) => handleInputFields('b', e.target.value)}
           name="b"
         />
       </div>
