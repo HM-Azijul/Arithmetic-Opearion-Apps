@@ -15,44 +15,16 @@ const InitialInputState = {
 const App = () => {
   const [inputState, setInputeState] = useState({ ...InitialInputState });
 
-  // way-01
   const handleInputFields = (e) => {
-    // console.log(e.target.name);
     setInputeState({
       ...inputState,
       [e.target.name]: parseInt(e.target.value),
     });
   };
 
-  //way-02
-  // const handleFieldA = (e) => {
-  //   setInputeState({
-  //     ...inputState,
-  //     a: parseInt(e.target.value),
-  //   });
-  // };
-  // const handleFieldB = (e) => {
-  //   setInputeState({
-  //     ...inputState,
-  //     b: parseInt(e.target.value),
-  //   });
-  // };
-
-  // way-03
-  // const handleInputFields = (key, value) => {
-  //   setInputeState({
-  //     ...inputState,
-  //     [key]: value,
-  //   });
-  // };
-
-  //way-04
-  // const handleInputFields = (inp) => {
-  //   setInputeState({
-  //     ...inputState,
-  //     ...inp,
-  //   });
-  // };
+  const handleClearOps = () => {
+    setInputeState({ ...InitialInputState });
+  };
 
   return (
     <div style={{ width: '50%', margin: '0 auto' }}>
@@ -81,7 +53,7 @@ const App = () => {
         <button>-</button>
         <button>*</button>
         <button>/</button>
-        <button>Clear</button>
+        <button onClick={handleClearOps}>Clear</button>
       </div>
 
       <div>
