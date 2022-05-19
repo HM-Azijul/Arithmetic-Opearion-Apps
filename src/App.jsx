@@ -5,8 +5,16 @@
  * Fourth TODO: Render history list
  * Fiveth TODO: Restore the history
  */
+import { useState } from 'react';
+
+const InitialInputState = {
+  a: 0,
+  b: 0,
+};
 
 const App = () => {
+  const [inputState, setInputeState] = useState({ ...InitialInputState });
+
   return (
     <div style={{ width: '50%', margin: '0 auto' }}>
       <h1>Result: 0</h1>
