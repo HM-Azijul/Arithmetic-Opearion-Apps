@@ -6,9 +6,15 @@
   box-sizing: border-box;
   font-family: 'Poppins', sans-serif;
 }
+:root {
+  --primary-color: #895c72;
+  --secondary-color: #ac7d88;
+  --offWhite-color: #f8ecd1;
+}
+
 body {
-  background: #f8ecd1;
-  color: #895c72;
+  background: var(--offWhite-color);
+  color: var(--primary-color);
 }
 .container {
   min-width: 40vw;
@@ -23,7 +29,7 @@ body {
   justify-content: center;
   flex-direction: column;
   border-radius: 1.25rem;
-  border: 0.3rem solid #ac7d88;
+  border: 0.3rem solid var(--secondary-color);
   padding: 1rem 1.5rem;
 }
 
@@ -45,9 +51,9 @@ input[type='number'] {
   padding: 2px 8px;
   outline: none;
   border-radius: 0.75rem;
-  background-color: #ac7d88;
-  border: 2px solid #85586f;
-  color: #f8ecd1;
+  background-color: var(--secondary-color);
+  border: 2px solid var(--primary-color);
+  color: var(--offWhite-color);
   width: 100%;
 }
 .operation-wrap {
@@ -61,9 +67,9 @@ input[type='number'] {
   gap: 5px;
 }
 .btn {
-  background-color: #ac7d88;
-  border: 2px solid #85586f;
-  color: #f8ecd1;
+  background-color: var(--secondary-color);
+  border: 2px solid var(--primary-color);
+  color: var(--offWhite-color);
   border-radius: 0.3rem;
   padding: 5px 10px;
   gap: 5px;
@@ -72,8 +78,8 @@ input[type='number'] {
 .btn:hover,
 button:disabled,
 button[disabled] {
-  background-color: #85586f;
-  border: 2px solid #ac7d88;
+  background-color: var(--primary-color);
+  border: 2px solid var(--secondary-color);
   transition: 0.3s;
 }
 
