@@ -91,3 +91,10 @@ button[disabled] {
   list-style: none;
   padding-bottom: 0.4rem;
 }
+
+@media (max-width: 767px) {
+  .container {
+    min-width: 80vw;
+    max-width: 80vw;
+  }
+}
