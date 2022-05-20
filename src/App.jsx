@@ -7,6 +7,17 @@
  */
 import { useState } from 'react';
 
+function* generateId() {
+  let id = 0;
+  while (true) {
+    yield id++;
+  }
+}
+const getId = generateId();
+// console.log(getId.next().value);
+// console.log(getId.next().value);
+// console.log(getId.next().value);
+
 const InitialInputState = {
   a: 0,
   b: 0,
@@ -33,10 +44,15 @@ const App = () => {
       'operation',
       `return ${inputState.a} ${operation} ${inputState.b};`
     );
-    // console.log(f);
-    // console.log(f(operation));
-
     setResult(f(operation));
+
+    const history = {
+      id: getId.next().value,
+      inputs: inputState,
+      operation,
+      date: new Date(),
+    };
+    console.log(history);
   };
 
   return (
@@ -77,6 +93,15 @@ const App = () => {
         <p>
           <small>There is no history</small>
         </p>
+
+        <ul>
+          <li>
+            <p>Operation: 10 + 20, Result: 30</p>
+            <small>5/14/2022</small>
+            <br />
+            <button>restore</button>
+          </li>
+        </ul>
       </div>
     </div>
   );
