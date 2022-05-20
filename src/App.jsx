@@ -6,6 +6,7 @@
  * DONE: Restore the history
  */
 import { useState } from 'react';
+import './App.css';
 
 function* generateId() {
   let id = 0;
@@ -70,71 +71,89 @@ const App = () => {
   };
 
   return (
-    <div style={{ width: '50%', margin: '0 auto' }}>
-      <h1>Result: {result}</h1>
+    <div className="container">
+      <div className="app">
+        <h1>Result: {result}</h1>
 
-      <div>
-        <p>Inputs</p>
+        <div>
+          <p className="sub-title">Inputs</p>
 
-        <input
-          type="number"
-          value={inputState.a}
-          onChange={handleInputFields}
-          name="a"
-        />
-        <input
-          type="number"
-          value={inputState.b}
-          onChange={handleInputFields}
-          name="b"
-        />
-      </div>
+          <div className="input-box">
+            <input
+              type="number"
+              value={inputState.a}
+              onChange={handleInputFields}
+              name="a"
+            />
+            <input
+              type="number"
+              value={inputState.b}
+              onChange={handleInputFields}
+              name="b"
+            />
+          </div>
+        </div>
 
-      <div>
-        <p>Operations</p>
+        <div className="operation-wrap">
+          <p className="sub-title">Operations</p>
 
-        <button onClick={() => handleArithmeticOps('+')}>+</button>
-        <button onClick={() => handleArithmeticOps('-')}>-</button>
-        <button onClick={() => handleArithmeticOps('*')}>*</button>
-        <button onClick={() => handleArithmeticOps('/')}>/</button>
-        <button onClick={() => handleArithmeticOps('%')}>%</button>
+          <div className="btn-wrap">
+            <button className="btn" onClick={() => handleArithmeticOps('+')}>
+              +
+            </button>
+            <button className="btn" onClick={() => handleArithmeticOps('-')}>
+              -
+            </button>
+            <button className="btn" onClick={() => handleArithmeticOps('*')}>
+              *
+            </button>
+            <button className="btn" onClick={() => handleArithmeticOps('/')}>
+              /
+            </button>
+            <button className="btn" onClick={() => handleArithmeticOps('%')}>
+              %
+            </button>
+          </div>
 
-        <button onClick={handleClearOps}>Clear</button>
-      </div>
+          <button className="btn" onClick={handleClearOps}>
+            Clear
+          </button>
+        </div>
 
-      <div>
-        <p>History</p>
-        {histories.length === 0 ? (
-          <p>
-            <small>There is no history</small>
-          </p>
-        ) : (
-          <ul>
-            {histories.map((historyItem) => (
-              <li key={historyItem.id}>
-                {/* <p>Operation: 10 + 20, Result: 30</p> */}
-                <p>
-                  Operation: {historyItem.inputs.a} {historyItem.operation}
-                  {historyItem.inputs.b}, Result: {historyItem.result}
-                </p>
-                <small>
-                  {historyItem.date.toLocaleDateString()}{' '}
-                  {historyItem.date.toLocaleTimeString()}
-                </small>
-                <br />
-                <button
-                  onClick={() => handleRestoreBtn(historyItem)}
-                  disabled={
-                    restoredHistory != null &&
-                    restoredHistory.id == historyItem.id
-                  }
-                >
-                  restore
-                </button>
-              </li>
-            ))}
-          </ul>
-        )}
+        <div>
+          <p className="sub-title">History</p>
+          {histories.length === 0 ? (
+            <p>
+              <small>There is no history</small>
+            </p>
+          ) : (
+            <ul>
+              {histories.map((historyItem) => (
+                <li key={historyItem.id}>
+                  {/* <p>Operation: 10 + 20, Result: 30</p> */}
+                  <p>
+                    Operation: {historyItem.inputs.a} {historyItem.operation}
+                    {historyItem.inputs.b}, Result: {historyItem.result}
+                  </p>
+                  <small>
+                    {historyItem.date.toLocaleDateString()}{' '}
+                    {historyItem.date.toLocaleTimeString()}
+                  </small>
+                  <br />
+                  <button
+                    onClick={() => handleRestoreBtn(historyItem)}
+                    disabled={
+                      restoredHistory != null &&
+                      restoredHistory.id == historyItem.id
+                    }
+                  >
+                    restore
+                  </button>
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   );
