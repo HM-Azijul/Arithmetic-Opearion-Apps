@@ -3,7 +3,7 @@
  * DONE: Handle Operations
  * DONE: Handle a list of histories
  * DONE: Render history list
- * Fiveth TODO: Restore the history
+ * DONE: Restore the history
  */
 import { useState } from 'react';
 
@@ -14,9 +14,6 @@ function* generateId() {
   }
 }
 const getId = generateId();
-// console.log(getId.next().value);
-// console.log(getId.next().value);
-// console.log(getId.next().value);
 
 const InitialInputState = {
   a: 0,
@@ -27,6 +24,7 @@ const App = () => {
   const [inputState, setInputeState] = useState({ ...InitialInputState });
   const [result, setResult] = useState(0);
   const [histories, setHistories] = useState([]);
+  const [restoredHistory, setRestoredHistory] = useState(null);
 
   const handleInputFields = (e) => {
     setInputeState({
@@ -55,7 +53,7 @@ const App = () => {
 
     const historyItem = {
       id: getId.next().value,
-      inputs: inputState,
+      inputs: { ...inputState },
       operation,
       result,
       date: new Date(),
@@ -63,6 +61,12 @@ const App = () => {
     // console.log(history);
 
     setHistories([historyItem, ...histories]);
+  };
+
+  const handleRestoreBtn = (historyItem) => {
+    setInputeState({ ...historyItem.inputs });
+    setResult(historyItem.result);
+    setRestoredHistory(historyItem);
   };
 
   return (
@@ -118,7 +122,15 @@ const App = () => {
                   {historyItem.date.toLocaleTimeString()}
                 </small>
                 <br />
-                <button>restore</button>
+                <button
+                  onClick={() => handleRestoreBtn(historyItem)}
+                  disabled={
+                    restoredHistory != null &&
+                    restoredHistory.id == historyItem.id
+                  }
+                >
+                  restore
+                </button>
               </li>
             ))}
           </ul>
