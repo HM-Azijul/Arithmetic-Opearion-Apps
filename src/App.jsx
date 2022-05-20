@@ -1,8 +1,8 @@
 /**
  * DONE: Handle user input fields
  * DONE: Handle Operations
- * Third TODO: Handle a list of histories
- * Fourth TODO: Render history list
+ * DONE: Handle a list of histories
+ * DONE: Render history list
  * Fiveth TODO: Restore the history
  */
 import { useState } from 'react';
@@ -50,17 +50,19 @@ const App = () => {
       'operation',
       `return ${inputState.a} ${operation} ${inputState.b};`
     );
-    setResult(f(operation));
+    const result = f(operation);
+    setResult(result);
 
-    const history = {
+    const historyItem = {
       id: getId.next().value,
       inputs: inputState,
       operation,
+      result,
       date: new Date(),
     };
-    console.log(history);
+    // console.log(history);
 
-    setHistories([history, ...histories]);
+    setHistories([historyItem, ...histories]);
   };
 
   return (
@@ -104,12 +106,21 @@ const App = () => {
           </p>
         ) : (
           <ul>
-            <li>
-              <p>Operation: 10 + 20, Result: 30</p>
-              <small>5/14/2022</small>
-              <br />
-              <button>restore</button>
-            </li>
+            {histories.map((historyItem) => (
+              <li key={historyItem.id}>
+                {/* <p>Operation: 10 + 20, Result: 30</p> */}
+                <p>
+                  Operation: {historyItem.inputs.a} {historyItem.operation}
+                  {historyItem.inputs.b}, Result: {historyItem.result}
+                </p>
+                <small>
+                  {historyItem.date.toLocaleDateString()}{' '}
+                  {historyItem.date.toLocaleTimeString()}
+                </small>
+                <br />
+                <button>restore</button>
+              </li>
+            ))}
           </ul>
         )}
       </div>
