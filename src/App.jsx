@@ -26,6 +26,7 @@ const InitialInputState = {
 const App = () => {
   const [inputState, setInputeState] = useState({ ...InitialInputState });
   const [result, setResult] = useState(0);
+  const [histories, setHistories] = useState([]);
 
   const handleInputFields = (e) => {
     setInputeState({
@@ -43,7 +44,7 @@ const App = () => {
     if (!inputState.a || !inputState.b) {
       alert('Invalid Input');
       return;
-    }
+    } // add simple inputState validator
 
     const f = new Function(
       'operation',
@@ -58,6 +59,8 @@ const App = () => {
       date: new Date(),
     };
     console.log(history);
+
+    setHistories([history, ...histories]);
   };
 
   return (
@@ -95,18 +98,20 @@ const App = () => {
 
       <div>
         <p>History</p>
-        <p>
-          <small>There is no history</small>
-        </p>
-
-        <ul>
-          <li>
-            <p>Operation: 10 + 20, Result: 30</p>
-            <small>5/14/2022</small>
-            <br />
-            <button>restore</button>
-          </li>
-        </ul>
+        {histories.length === 0 ? (
+          <p>
+            <small>There is no history</small>
+          </p>
+        ) : (
+          <ul>
+            <li>
+              <p>Operation: 10 + 20, Result: 30</p>
+              <small>5/14/2022</small>
+              <br />
+              <button>restore</button>
+            </li>
+          </ul>
+        )}
       </div>
     </div>
   );
