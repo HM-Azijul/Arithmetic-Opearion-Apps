@@ -76,7 +76,7 @@ const App = () => {
         <h1>Result: {result}</h1>
 
         <div>
-          <p className="sub-title">Inputs</p>
+          <h3>Inputs</h3>
 
           <div className="input-box">
             <input
@@ -95,7 +95,7 @@ const App = () => {
         </div>
 
         <div className="operation-wrap">
-          <p className="sub-title">Operations</p>
+          <h3>Operations</h3>
 
           <div className="btn-wrap">
             <button className="btn" onClick={() => handleArithmeticOps('+')}>
@@ -120,8 +120,8 @@ const App = () => {
           </button>
         </div>
 
-        <div>
-          <p className="sub-title">History</p>
+        <div className="history-wrap">
+          <h3>History</h3>
           {histories.length === 0 ? (
             <p>
               <small>There is no history</small>
@@ -132,7 +132,7 @@ const App = () => {
                 <li key={historyItem.id}>
                   {/* <p>Operation: 10 + 20, Result: 30</p> */}
                   <p>
-                    Operation: {historyItem.inputs.a} {historyItem.operation}
+                    Operation: {historyItem.inputs.a} {historyItem.operation}{' '}
                     {historyItem.inputs.b}, Result: {historyItem.result}
                   </p>
                   <small>
@@ -141,6 +141,7 @@ const App = () => {
                   </small>
                   <br />
                   <button
+                    className="btn"
                     onClick={() => handleRestoreBtn(historyItem)}
                     disabled={
                       restoredHistory != null &&

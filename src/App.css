@@ -26,9 +26,6 @@ body {
   border: 0.3rem solid #ac7d88;
   padding: 1rem 1.5rem;
 }
-.sub-title {
-  font-weight: 500;
-}
 
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
@@ -57,7 +54,7 @@ input[type='number'] {
   display: flex;
   flex-direction: column;
   gap: 5px;
-  margin-top: 0.6rem;
+  margin-top: 0.7rem;
 }
 .btn-wrap {
   display: flex;
@@ -70,9 +67,21 @@ input[type='number'] {
   border-radius: 0.3rem;
   padding: 5px 10px;
   gap: 5px;
+  cursor: pointer;
 }
-.btn:hover {
+.btn:hover,
+button:disabled,
+button[disabled] {
   background-color: #85586f;
   border: 2px solid #ac7d88;
   transition: 0.3s;
+}
+
+.history-wrap {
+  margin-top: 0.7rem;
+}
+
+.history-wrap ul li {
+  list-style: none;
+  padding-bottom: 0.4rem;
 }
